@@ -15,14 +15,8 @@ app.prepare().then(() => {
   const server = new Koa()
   const router = new Router()
 
-  router.get('/login', async ctx => {
-    await app.render(ctx.req, ctx.res, '/login', ctx.query)
-    ctx.respond = false
-  })
-
-  router.get('/b', async ctx => {
-    await app.render(ctx.req, ctx.res, '/a', ctx.query)
-    ctx.respond = false
+  router.get('/', async ctx => {
+    ctx.redirect('/dashboard')
   })
 
   router.get('*', async ctx => {

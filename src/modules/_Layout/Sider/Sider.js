@@ -6,7 +6,6 @@ import React from 'react'
 import Link from 'next/link'
 import Scrollbars from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
-import { withSize } from 'react-sizeme'
 
 import { isSiderCollapsedSelector } from '../../../redux/ui/selectors'
 import styles from './index.css'
@@ -98,4 +97,4 @@ const mapStateToProps = state => ({
   isSiderCollapsed: isSiderCollapsedSelector(state)
 })
 
-export default R.compose(withSize(), connect(mapStateToProps))(Sider)
+export default R.compose(connect(mapStateToProps))(Sider)

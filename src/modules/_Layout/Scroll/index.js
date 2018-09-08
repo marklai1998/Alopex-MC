@@ -11,6 +11,6 @@ type Props = {
 
 export const Scroll = (props: Props) => (
   <div className={styles.wrapper}>
-    <Scrollbars universal>{props.children}</Scrollbars>
+    <Scrollbars universal >{props.children}</Scrollbars>
   </div>
 )
