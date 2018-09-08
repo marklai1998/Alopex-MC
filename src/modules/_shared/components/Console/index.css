@@ -1,0 +1,20 @@
+.console {
+  height: 100%;
+  width: 300px;
+  background-color: #fafafa;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px #aaaaaa50;
+}
+
+.console.collapsed {
+  width: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .console {
+    position: absolute;
+    right: 0;
+  }
+}

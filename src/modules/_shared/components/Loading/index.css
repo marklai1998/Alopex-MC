@@ -1,0 +1,70 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingText {
+  margin-top: 160px;
+  font-size: 20px;
+}
+
+.cube {
+  transform-style: preserve-3d;
+  animation: spin 3s infinite ease-out;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+}
+
+.cube div {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(10, 0, 0, 0.1);
+  background: #0496ff;
+  display: block;
+  position: absolute;
+}
+
+.cube div.top {
+  transform: rotateX(90deg);
+  margin-top: -35px;
+}
+
+.cube div.right {
+  transform: rotateY(90deg);
+  margin-left: 35px;
+}
+
+.cube div.bottom {
+  transform: rotateX(-90deg);
+  margin-top: 35px;
+}
+
+.cube div.left {
+  transform: rotateY(-90deg);
+  margin-left: -35px;
+}
+
+.cube div.front {
+  transform: translateZ(35px);
+}
+
+.cube div.back {
+  transform: translateZ(-35px) rotateX(180deg);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(-20deg) rotateY(20deg);
+  }
+
+  100% {
+    transform: rotateX(-20deg) rotateY(740deg);
+  }
+}

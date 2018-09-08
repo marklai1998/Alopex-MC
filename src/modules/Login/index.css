@@ -1,0 +1,44 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginBox {
+  background: #fff;
+  width: 300px;
+  box-shadow: 0 0 15px #aaaaaa50;
+  padding: 20px;
+}
+
+.title {
+  font-size: 30px;
+  color: #027bce;
+  text-align: center;
+}
+
+.logoWrapper {
+  padding: 33px 0 33px 0;
+}
+
+.logo {
+  margin: 0 auto;
+}
+
+.submit {
+  border: 0;
+  border-radius: 100%;
+  width: 35px;
+  height: 35px;
+  color: #fff;
+  background-color: #027bce;
+  margin: 30px auto 20px;
+  display: block;
+  transition: all 0.3s;
+}
+
+.submit:hover {
+  background-color: #0270bc;
+}

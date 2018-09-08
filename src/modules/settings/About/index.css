@@ -1,0 +1,33 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutBox {
+  background: #fff;
+  width: 300px;
+  box-shadow: 0 0 15px #aaaaaa50;
+  padding: 20px;
+}
+
+.title {
+  font-size: 30px;
+  color: #027bce;
+  text-align: center;
+}
+
+.logoWrapper {
+  padding: 33px 0 33px 0;
+}
+
+.logo {
+  margin: 0 auto;
+}
+
+.content {
+  text-align: center;
+  margin-top: 20px;
+}

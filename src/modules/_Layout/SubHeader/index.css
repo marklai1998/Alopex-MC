@@ -1,0 +1,60 @@
+.subHeader {
+  background-color: #fff;
+  height: 50px;
+  line-height: 50px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.title {
+  width: 100%;
+  padding-left: 85px;
+}
+
+.shadow {
+  box-shadow: 0 0 15px #aaaaaa50;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.toggleNavButton {
+  width: 50px;
+  height: 50px;
+  background-color: #335469;
+  border: 0;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.toggleNavButton:hover {
+  background-color: #2e4b5e;
+}
+
+.toggleNavButton i {
+  transition: transform 0.3s;
+}
+
+.toggleNavButton.collapsed i {
+  transform: rotate(180deg);
+}
+
+.toggleConsoleButton {
+  width: 50px;
+  height: 50px;
+  background-color: #3e93d0;
+  border: 0;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.toggleConsoleButton:hover {
+  background-color: #3783b9;
+}

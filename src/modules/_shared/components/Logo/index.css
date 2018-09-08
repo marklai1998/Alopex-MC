@@ -1,0 +1,44 @@
+.logo {
+  position: relative;
+  width: 80px;
+  height: 46.2px;
+  margin-top: 23px;
+  margin-bottom: 23px;
+}
+
+.logo img {
+  position: absolute;
+  width: 55px;
+  margin: 1px auto;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.logoBG {
+  position: absolute;
+  width: 100%;
+  height: 46.2px;
+  background-color: #027bce;
+  z-index: 2;
+}
+
+.logoBG::before,
+.logoBG::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+}
+
+.logoBG::before {
+  bottom: 100%;
+  border-bottom: 23px solid #027bce;
+}
+
+.logoBG::after {
+  top: 100%;
+  width: 0;
+  border-top: 23px solid #027bce;
+}
