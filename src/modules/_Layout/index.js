@@ -9,13 +9,14 @@ import { Sider } from './Sider'
 import { SubHeader } from './SubHeader'
 
 type Props = {
-  children: React.Node
+  children: React.Node,
+  title: string
 }
 
 export const Layout = (props: Props) => (
   <div className={styles.mainFrame}>
     <Header />
-    <SubHeader />
+    <SubHeader title={props.title} />
     <div className={styles.row}>
       <Sider />
       <div className={styles.content}>{props.children}</div>

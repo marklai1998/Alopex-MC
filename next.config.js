@@ -5,6 +5,7 @@ const path = require('path')
 const withCSS = require('@zeit/next-css')
 
 const config = {
+  useFileSystemPublicRoutes: false,
   cssModules: true,
   webpack (config) {
     const rules = [

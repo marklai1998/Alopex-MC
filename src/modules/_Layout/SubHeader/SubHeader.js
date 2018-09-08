@@ -19,6 +19,7 @@ type Props = {
   isMobile: boolean,
   setSiderCollapsed: boolean => void,
   setConsoleCollapsed: boolean => void,
+  title: string
 }
 
 class SubHeader extends PureComponent<Props> {
@@ -62,7 +63,7 @@ class SubHeader extends PureComponent<Props> {
           <i className='fas fa-angle-double-left' />
         </button>
         <div className={styles.shadow}>
-          <div className={styles.title}>Dashboard</div>
+          <div className={styles.title}>{this.props.title}</div>
           <button
             type='button'
             className={styles.toggleConsoleButton}
@@ -91,6 +92,9 @@ const mapSizesToProps = ({ width }) => ({
 })
 
 export default R.compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   withSizes(mapSizesToProps)
 )(SubHeader)
