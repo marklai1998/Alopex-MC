@@ -1,6 +1,7 @@
 .wrapper {
   position: relative;
   display: flex;
+  flex-direction: column;
   width: 100%;
   margin-top: 10px;
 }
@@ -8,9 +9,12 @@
 .input {
   padding: 5px;
   border: 0;
-  border-bottom: 2px solid #00487c;
+  border-bottom: 2px solid #0496ff;
   margin-top: 20px;
-  width: 100%;
+}
+
+.input.error {
+  border-bottom: 2px solid #f00;
 }
 
 .label {
@@ -21,10 +25,16 @@
   transition: 0.3s ease all;
 }
 
-.input:focus ~ .label,
-.input:not(:focus):valid ~ .label {
+.label.isFocus {
   top: 2px;
   left: 5px;
   font-size: 13px;
   opacity: 0.6;
+}
+
+.errorText {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #f00;
+  margin-left: 10px;
 }

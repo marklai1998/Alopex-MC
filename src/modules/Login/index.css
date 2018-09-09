@@ -33,12 +33,12 @@
   width: 35px;
   height: 35px;
   color: #fff;
-  background-color: #027bce;
+  background-color: #0496ff;
   margin: 30px auto 20px;
   display: block;
   transition: all 0.3s;
 }
 
 .submit:hover {
-  background-color: #0270bc;
+  background-color: #0489e8;
 }

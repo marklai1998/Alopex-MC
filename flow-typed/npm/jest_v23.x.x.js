@@ -1,5 +1,5 @@
-// flow-typed signature: ab4904b746f7f8ceb850909daa37100f
-// flow-typed version: 7162f9ef44/jest_v23.x.x/flow_>=v0.39.x
+// flow-typed signature: bbea6c3557c9f066b2d19cac6130a3b8
+// flow-typed version: 0e8507a159/jest_v23.x.x/flow_>=v0.39.x
 
 type JestMockFn<TArguments: $ReadOnlyArray<*>, TReturn> = {
   (...args: TArguments): TReturn,
@@ -17,7 +17,12 @@ type JestMockFn<TArguments: $ReadOnlyArray<*>, TReturn> = {
      * An array that contains all the object instances that have been
      * instantiated from this mock function.
      */
-    instances: Array<TReturn>
+    instances: Array<TReturn>,
+    /**
+     * An array that contains all the object results that have been
+     * returned by this mock function call
+     */
+    results: Array<{ isThrow: boolean, value: TReturn }>
   },
   /**
    * Resets all information stored in the mockFn.mock.calls and

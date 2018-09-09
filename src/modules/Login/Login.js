@@ -1,30 +1,90 @@
 // @flow strict
 
+import { Text } from 'inputFields/Text'
+import * as R from 'ramda'
+import { createForm } from 'rc-form'
 import React from 'react'
+import { connect } from 'react-redux'
 
+import { authCreators } from '../../redux/auth/actions'
 import { AlopexBg } from '../_shared/components/AlopexBg'
 import { Logo } from '../_shared/components/Logo'
+import {
+  fieldKeyFormatter,
+  inputTypes,
+  rulesGenerator
+} from '../_shared/utils/formHelper'
 import styles from './index.css'
-import { Text } from 'inputFields/Text'
 
-const Login = () => (
-  <AlopexBg>
-    <div className={styles.container}>
-      <div className={styles.loginBox}>
-        <div className={styles.logoWrapper}>
-          <Logo className={styles.logo} />
-        </div>
-        <div className={styles.title}>Login</div>
-        <div className={styles.inputFields}>
-          <Text label='User Name' id='username' />
-          <Text label='Password' id='password' type='password' />
-          <button type='submit' className={styles.submit}>
-            <i className='fas fa-arrow-right' />
-          </button>
-        </div>
-      </div>
-    </div>
-  </AlopexBg>
-)
+type Props = {
+  form: Object,
+  authUser: ({ username: string, password: string }) => void
+}
 
-export default Login
+class Login extends React.PureComponent<Props> {
+  submit = () => {
+    this.props.form.validateFields((error, value) => {
+      if (!error) {
+        console.log(value)
+        this.props.authUser(value)
+      }
+    })
+  }
+
+  render () {
+    return (
+      <AlopexBg>
+        <div className={styles.container}>
+          <div className={styles.loginBox}>
+            <div className={styles.logoWrapper}>
+              <Logo className={styles.logo} />
+            </div>
+            <div className={styles.title}>Login</div>
+            <div className={styles.inputFields}>
+              <Text
+                label='User Name'
+                form={this.props.form}
+                id={fieldKeyFormatter(['username'])}
+                rules={rulesGenerator({
+                  type: inputTypes.STRING,
+                  name: 'Username'
+                })}
+              />
+              <Text
+                label='Password'
+                type='password'
+                form={this.props.form}
+                id={fieldKeyFormatter(['password'])}
+                rules={rulesGenerator({
+                  type: inputTypes.STRING,
+                  name: 'Password'
+                })}
+              />
+              <button
+                type='submit'
+                className={styles.submit}
+                onClick={this.submit}
+              >
+                <i className='fas fa-arrow-right' />
+              </button>
+            </div>
+          </div>
+        </div>
+      </AlopexBg>
+    )
+  }
+}
+
+const mapStateToProps = () => ({})
+
+const mapDispatchToProps = {
+  authUser: authCreators.authUser
+}
+
+export default R.compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  createForm()
+)(Login)

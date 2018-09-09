@@ -1,4 +1,5 @@
 const Router = require('koa-router')
+const login = require('./login')
 const dashboard = require('./dashboard')
 const settings = require('./settings')
 
@@ -9,6 +10,9 @@ module.exports = app => {
   router.get('/', async ctx => {
     ctx.redirect('/dashboard')
   })
+
+  const loginRoutes = login(app)
+  router.use('/login', loginRoutes.routes(), loginRoutes.allowedMethods())
 
   const dashboardRoutes = dashboard(app)
   router.use(
