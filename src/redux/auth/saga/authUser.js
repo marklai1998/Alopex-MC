@@ -9,7 +9,7 @@ import { authCreators } from '../actions'
 
 export function * authUser (
   authUserApi: typeof authApi,
-  payload: ActionType<typeof authCreators.authUser>
+  { payload }: ActionType<typeof authCreators.authUser>
 ): Saga<void> {
   try {
     const { data } = yield call(authUserApi.login, payload)

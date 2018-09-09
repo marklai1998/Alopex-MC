@@ -3,12 +3,13 @@ const nextjs = require('next')
 const R = require('ramda')
 const mongoose = require('mongoose')
 var URI = require('urijs')
+const bodyParser = require('koa-bodyparser')
 
 const config = require('../alopex.config.json')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = nextjs({ dev, dir: './src' })
-const routes = require('./routes')
+const routes = require('./router')
 
 app.prepare().then(() => {
   const server = new Koa()
@@ -39,13 +40,14 @@ app.prepare().then(() => {
         console.log(`cannot create connection to database, error: ${err}`)
       }
     )
+  server.use(bodyParser())
 
   server.use(async (ctx, next) => {
     ctx.res.statusCode = 200
     await next()
   })
 
-  server.use(router.routes())
+  server.use(router.routes()).use(router.allowedMethods())
 
   server.listen(serverPort, () => {
     console.log(`> Ready on http://localhost:${serverPort}`)

@@ -2,5 +2,7 @@
 
 import type { Axios } from 'axios'
 
-export const login = (api: Axios) => (...args: any) =>
-  api.post(`/api/login`, ...args)
+export const login = (api: Axios) => (loginObj: {
+  username: string,
+  password: string
+}) => api.post(`/api/login`, loginObj)

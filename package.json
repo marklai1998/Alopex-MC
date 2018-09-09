@@ -30,6 +30,7 @@
     "classnames": "^2.2.6",
     "immutable": "^4.0.0-rc.9",
     "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "mongoose": "^5.2.13",
     "next": "^6.1.2",

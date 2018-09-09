@@ -16,8 +16,8 @@ const setLoginStatus = createAction(
 
 export const authUser = createAction(
   authTypes.AUTH_USER,
-  ({ userName, password }: { userName: string, password: string }) => ({
-    userName,
+  ({ username, password }: { username: string, password: string }) => ({
+    username,
     password
   })
 )
