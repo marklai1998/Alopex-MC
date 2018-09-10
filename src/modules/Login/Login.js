@@ -22,7 +22,8 @@ type Props = {
 }
 
 class Login extends React.PureComponent<Props> {
-  submit = () => {
+  onSubmit = e => {
+    e.preventDefault()
     this.props.form.validateFields((error, value) => {
       if (!error) {
         console.log(value)
@@ -40,7 +41,7 @@ class Login extends React.PureComponent<Props> {
               <Logo className={styles.logo} />
             </div>
             <div className={styles.title}>Login</div>
-            <div className={styles.inputFields}>
+            <form className={styles.inputFields} onSubmit={this.onSubmit}>
               <Text
                 label='User Name'
                 form={this.props.form}
@@ -63,11 +64,11 @@ class Login extends React.PureComponent<Props> {
               <button
                 type='submit'
                 className={styles.submit}
-                onClick={this.submit}
+                onClick={this.onSubmit}
               >
                 <i className='fas fa-arrow-right' />
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </AlopexBg>

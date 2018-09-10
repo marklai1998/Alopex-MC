@@ -2,15 +2,16 @@
 
 const Koa = require('koa')
 const nextjs = require('next')
+const dev = process.env.NODE_ENV !== 'production'
+const app = nextjs({ dev, dir: './src' })
 const R = require('ramda')
 const mongoose = require('mongoose')
 var URI = require('urijs')
 const bodyParser = require('koa-bodyparser')
-
 const config = require('../alopex.config.json')
 
-const dev = process.env.NODE_ENV !== 'production'
-const app = nextjs({ dev, dir: './src' })
+require('./models/user')
+
 const routes = require('./router')
 const initDb = require('./utils/initDb')
 
