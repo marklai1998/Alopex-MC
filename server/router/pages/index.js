@@ -1,3 +1,5 @@
+'use strict'
+
 const Router = require('koa-router')
 
 const login = require('./login')
@@ -12,11 +14,7 @@ module.exports = app => {
   pages.use('/login', loginRoutes.routes(), loginRoutes.allowedMethods())
 
   const dashboardRoutes = dashboard(app)
-  pages.use(
-    '/dashboard',
-    dashboardRoutes.routes(),
-    dashboardRoutes.allowedMethods()
-  )
+  pages.use('/', dashboardRoutes.routes(), dashboardRoutes.allowedMethods())
 
   const settingsRoutes = settings(app)
   pages.use(

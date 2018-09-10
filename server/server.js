@@ -1,3 +1,5 @@
+'use strict'
+
 const Koa = require('koa')
 const nextjs = require('next')
 const R = require('ramda')
@@ -10,6 +12,7 @@ const config = require('../alopex.config.json')
 const dev = process.env.NODE_ENV !== 'production'
 const app = nextjs({ dev, dir: './src' })
 const routes = require('./router')
+const initDb = require('./utils/initDb')
 
 app.prepare().then(() => {
   const server = new Koa()
@@ -27,6 +30,7 @@ app.prepare().then(() => {
     path: `/${dbName}`
   }).href()
 
+  mongoose.set('useCreateIndex', true)
   mongoose
     .connect(
       dbUrl,
@@ -35,11 +39,13 @@ app.prepare().then(() => {
     .then(
       () => {
         console.log(`> Connected database on ${dbUrl}`)
+        initDb()
       },
       err => {
         console.log(`cannot create connection to database, error: ${err}`)
       }
     )
+
   server.use(bodyParser())
 
   server.use(async (ctx, next) => {
