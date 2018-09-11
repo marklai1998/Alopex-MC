@@ -15,11 +15,12 @@ require('./models/user')
 const routes = require('./router')
 const initDb = require('./utils/initDb')
 
-app.prepare().then(() => {
+app.prepare().then(async () => {
   const server = new Koa()
   const router = routes(app)
   const serverPort = R.defaultTo('3000', config.server.port)
 
+  mongoose.set('useCreateIndex', true)
   const dbConfig = config.database
   const dbName = R.defaultTo('alopex', dbConfig.database)
   const dbUrl = new URI({
@@ -31,8 +32,7 @@ app.prepare().then(() => {
     path: `/${dbName}`
   }).href()
 
-  mongoose.set('useCreateIndex', true)
-  mongoose
+  await mongoose
     .connect(
       dbUrl,
       { useNewUrlParser: true }
@@ -43,7 +43,7 @@ app.prepare().then(() => {
         initDb()
       },
       err => {
-        console.log(`cannot create connection to database, error: ${err}`)
+        throw Error(`cannot create connection to database, error: ${err}`)
       }
     )
 

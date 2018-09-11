@@ -12,7 +12,10 @@ module.exports = async () => {
     const password = await bcrypt.hash('root', 10)
     await User.create({
       username: 'root',
-      password: password
+      password: password,
+      TOTP: {
+        force: true
+      }
     })
   }
 }

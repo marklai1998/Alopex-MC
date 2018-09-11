@@ -5,7 +5,11 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true, index: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    TOTP: {
+      force: { type: Boolean, required: true },
+      token: { type: String }
+    }
   },
   {
     timestamps: {
