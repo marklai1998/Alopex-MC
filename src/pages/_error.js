@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import { ErrorComponent } from '../modules/Error'
+
 type Props = {
   statusCode: number
 }
@@ -13,12 +15,6 @@ export default class ErrorPage extends React.Component<Props> {
   }
 
   render () {
-    return (
-      <p>
-        {this.props.statusCode
-          ? `An error ${this.props.statusCode} occurred on server`
-          : 'An error occurred on client'}
-      </p>
-    )
+    return <ErrorComponent statusCode={this.props.statusCode} />
   }
 }

@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 
 import { authCreators } from '../../redux/auth/actions'
 import { AlopexBg } from '../_shared/components/AlopexBg'
+import { CenterBox } from '../_shared/components/CenterBox'
 import { Logo } from '../_shared/components/Logo'
 import {
   fieldKeyFormatter,
@@ -35,42 +36,40 @@ class Login extends React.PureComponent<Props> {
   render () {
     return (
       <AlopexBg>
-        <div className={styles.container}>
-          <div className={styles.loginBox}>
-            <div className={styles.logoWrapper}>
-              <Logo className={styles.logo} />
-            </div>
-            <div className={styles.title}>Login</div>
-            <form className={styles.inputFields} onSubmit={this.onSubmit}>
-              <Text
-                label='User Name'
-                form={this.props.form}
-                id={fieldKeyFormatter(['username'])}
-                rules={rulesGenerator({
-                  type: inputTypes.STRING,
-                  name: 'Username'
-                })}
-              />
-              <Text
-                label='Password'
-                type='password'
-                form={this.props.form}
-                id={fieldKeyFormatter(['password'])}
-                rules={rulesGenerator({
-                  type: inputTypes.STRING,
-                  name: 'Password'
-                })}
-              />
-              <button
-                type='submit'
-                className={styles.submit}
-                onClick={this.onSubmit}
-              >
-                <i className='fas fa-arrow-right' />
-              </button>
-            </form>
+        <CenterBox>
+          <div className={styles.logoWrapper}>
+            <Logo className={styles.logo} />
           </div>
-        </div>
+          <div className={styles.title}>Login</div>
+          <form className={styles.inputFields} onSubmit={this.onSubmit}>
+            <Text
+              label='User Name'
+              form={this.props.form}
+              id={fieldKeyFormatter(['username'])}
+              rules={rulesGenerator({
+                type: inputTypes.STRING,
+                name: 'Username'
+              })}
+            />
+            <Text
+              label='Password'
+              type='password'
+              form={this.props.form}
+              id={fieldKeyFormatter(['password'])}
+              rules={rulesGenerator({
+                type: inputTypes.STRING,
+                name: 'Password'
+              })}
+            />
+            <button
+              type='submit'
+              className={styles.submit}
+              onClick={this.onSubmit}
+            >
+              <i className='fas fa-arrow-right' />
+            </button>
+          </form>
+        </CenterBox>
       </AlopexBg>
     )
   }
