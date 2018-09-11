@@ -1,9 +1,9 @@
 // @flow strict
 
 import classnames from 'classnames'
+import Link from 'next/link'
 import * as R from 'ramda'
 import React from 'react'
-import Link from 'next/link'
 import Scrollbars from 'react-custom-scrollbars'
 import { connect } from 'react-redux'
 
@@ -11,7 +11,7 @@ import { isSiderCollapsedSelector } from '../../../redux/ui/selectors'
 import styles from './index.css'
 
 type Props = {
-  isSiderCollapsed: boolean,
+  isSiderCollapsed: boolean
 }
 
 const Sider = (props: Props) => (
@@ -27,7 +27,7 @@ const Sider = (props: Props) => (
         })}
       >
         <li>
-          <Link href='/dashboard'>
+          <Link href='/'>
             <a>
               <i className='fas fa-tachometer-alt' />
               <span>Dashboard</span>
@@ -82,7 +82,7 @@ const Sider = (props: Props) => (
       })}
     >
       <li>
-        <Link href='/settings'>
+        <Link href='/settings/about'>
           <a>
             <i className='fas fa-cogs' />
             <span>Settings</span>

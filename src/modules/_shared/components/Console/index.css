@@ -6,6 +6,7 @@
   flex-shrink: 0;
   transition: all 0.3s;
   box-shadow: 0 0 15px #aaaaaa50;
+  z-index: 10;
 }
 
 .console.collapsed {
