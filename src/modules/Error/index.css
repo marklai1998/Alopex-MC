@@ -1,30 +1,28 @@
-.container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.aboutBox {
-  background: #fff;
-  width: 300px;
-  box-shadow: 0 0 15px #aaaaaa50;
-  padding: 20px;
-}
-
 .title {
   font-size: 30px;
   color: #027bce;
   text-align: center;
 }
 
-.logoWrapper {
+.iconWrapper {
   padding: 33px 0 33px 0;
 }
 
-.logo {
+.iconBg {
   margin: 0 auto;
+}
+
+.iconWrapper i {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 55px;
+  font-size: 40px;
+  z-index: 3;
+  top: 3px;
+  text-align: center;
 }
 
 .content {
