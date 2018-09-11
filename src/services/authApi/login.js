@@ -6,4 +6,4 @@ export const login = (api: Axios) => (loginInfo: {
   username: string,
   password: string,
   timeToken?: number
-}) => api.post(`/api/login`, loginInfo)
+}) => api.post(`/api/client/auth`, loginInfo)

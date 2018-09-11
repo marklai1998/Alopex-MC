@@ -27,7 +27,6 @@ class Login extends React.PureComponent<Props> {
     e.preventDefault()
     this.props.form.validateFields((error, value) => {
       if (!error) {
-        console.log(value)
         this.props.authUser(value)
       }
     })

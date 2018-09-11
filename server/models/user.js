@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     TOTP: {
       force: { type: Boolean, required: true },
-      token: { type: String }
+      key: { type: String }
     }
   },
   {

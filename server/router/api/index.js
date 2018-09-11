@@ -1,17 +1,14 @@
 'use strict'
 
 const Router = require('koa-router')
+
+const client = require('./client')
+const server = require('./server')
+
 const api = new Router()
-const bcrypt = require('bcryptjs')
 
-const mongoose = require('mongoose')
-const User = mongoose.model('User')
+api.use('/client', client.routes(), client.allowedMethods())
 
-module.exports = api.post('/login', async ctx => {
-  const { username, password } = ctx.request.body
-  const foundUser = await User.findOne({ username })
-  if (foundUser != null) {
-    const result = await bcrypt.compare(password, foundUser.password)
-    console.log(result)
-  }
-})
+api.use('/server', server.routes(), server.allowedMethods())
+
+module.exports = api
