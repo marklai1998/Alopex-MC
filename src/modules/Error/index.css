@@ -4,15 +4,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
 }
 
-.loginBox {
+.aboutBox {
   background: #fff;
-  min-width: 300px;
+  width: 300px;
   box-shadow: 0 0 15px #aaaaaa50;
   padding: 20px;
-  margin: auto;
 }
 
 .title {
@@ -29,18 +27,7 @@
   margin: 0 auto;
 }
 
-.submit {
-  border: 0;
-  border-radius: 100%;
-  width: 35px;
-  height: 35px;
-  color: #fff;
-  background-color: #0496ff;
-  margin: 30px auto 20px;
-  display: block;
-  transition: all 0.3s;
-}
-
-.submit:hover {
-  background-color: #0489e8;
+.content {
+  text-align: center;
+  margin-top: 20px;
 }
