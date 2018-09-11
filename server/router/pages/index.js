@@ -11,22 +11,16 @@ module.exports = app => {
   const pages = new Router()
 
   const loginRoutes = login(app)
-  pages.use('/login', loginRoutes.routes(), loginRoutes.allowedMethods())
-
   const dashboardRoutes = dashboard(app)
-  pages.use('/', dashboardRoutes.routes(), dashboardRoutes.allowedMethods())
-
   const settingsRoutes = settings(app)
-  pages.use(
-    '/settings',
-    settingsRoutes.routes(),
-    settingsRoutes.allowedMethods()
-  )
-
-  pages.get('*', async ctx => {
-    await handle(ctx.req, ctx.res)
-    ctx.respond = false
-  })
+  pages
+    .use('/login', loginRoutes.routes(), loginRoutes.allowedMethods())
+    .use('/settings', settingsRoutes.routes(), settingsRoutes.allowedMethods())
+    .use('/', dashboardRoutes.routes(), dashboardRoutes.allowedMethods())
+    .get('*', async ctx => {
+      await handle(ctx.req, ctx.res)
+      ctx.respond = false
+    })
 
   return pages
 }

@@ -20,7 +20,7 @@ app.prepare().then(async () => {
   const router = routes(app)
   const serverPort = R.defaultTo('3000', config.server.port)
 
-  mongoose.set('useCreateIndex', true)
+  await mongoose.set('useCreateIndex', true)
   const dbConfig = config.database
   const dbName = R.defaultTo('alopex', dbConfig.database)
   const dbUrl = new URI({
@@ -47,16 +47,15 @@ app.prepare().then(async () => {
       }
     )
 
-  server.use(bodyParser())
+  await server.use(bodyParser())
 
-  server.use(async (ctx, next) => {
+  await server.use(async (ctx, next) => {
     ctx.res.statusCode = 200
     await next()
   })
 
-  server.use(router.routes()).use(router.allowedMethods())
+  await server.use(router.routes()).use(router.allowedMethods())
 
-  server.listen(serverPort, () => {
-    console.log(`> Ready on http://localhost:${serverPort}`)
-  })
+  await server.listen(serverPort)
+  console.log(`> Ready on http://localhost:${serverPort}`)
 })

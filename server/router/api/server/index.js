@@ -9,7 +9,7 @@ const User = mongoose.model('User')
 
 const server = new Router()
 
-server.post('/login', async ctx => {
+module.exports = server.post('/login', async ctx => {
   const { username, password } = ctx.request.body
   const foundUser = await User.findOne({ username })
   if (foundUser != null) {
@@ -17,5 +17,3 @@ server.post('/login', async ctx => {
     console.log(result)
   }
 })
-
-module.exports = server

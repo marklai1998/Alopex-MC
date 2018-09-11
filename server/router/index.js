@@ -8,10 +8,10 @@ const api = require('./api')
 module.exports = app => {
   const router = new Router()
 
-  router.use('/api', api.routes(), api.allowedMethods())
-
   const pagesRoutes = pages(app)
-  router.use('*', pagesRoutes.routes(), pagesRoutes.allowedMethods())
+  router
+    .use('/api', api.routes(), api.allowedMethods())
+    .use('*', pagesRoutes.routes(), pagesRoutes.allowedMethods())
 
   return router
 }

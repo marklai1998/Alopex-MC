@@ -7,8 +7,6 @@ const server = require('./server')
 
 const api = new Router()
 
-api.use('/client', client.routes(), client.allowedMethods())
-
-api.use('/server', server.routes(), server.allowedMethods())
-
 module.exports = api
+  .use('/client', client.routes(), client.allowedMethods())
+  .use('/server', server.routes(), server.allowedMethods())
