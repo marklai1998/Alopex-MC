@@ -2,7 +2,7 @@
 
 const Koa = require('koa')
 const nextjs = require('next')
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NODE_ENV.toString() !== 'production'
 const app = nextjs({ dev, dir: './src' })
 const R = require('ramda')
 const mongoose = require('mongoose')
